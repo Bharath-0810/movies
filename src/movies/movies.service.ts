@@ -15,4 +15,7 @@ export class MoviesService {
     const movie = new this.movieModel(createMovieDto);
     return movie.save();
   }
+  async findAll(){
+     return this.movieModel.find().exec()
+  }
 }
