@@ -8,7 +8,7 @@ export class MoviesController {
 
     @Get()
     findAll(){
-        return 'this will return all movies'
+        return this.moviesService.findAll()
     }
     @Get(':id')
     findOne(@Param('id') id: string): string{
