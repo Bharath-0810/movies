@@ -18,4 +18,7 @@ export class MoviesService {
   async findAll(){
      return this.movieModel.find().exec()
   }
+  async findOne(id: String){
+    return this.movieModel.findById(id).exec()
+  }
 }

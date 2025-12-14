@@ -11,8 +11,8 @@ export class MoviesController {
         return this.moviesService.findAll()
     }
     @Get(':id')
-    findOne(@Param('id') id: string): string{
-        return `this will return movie with id: ${id}`;
+     findOne(@Param('id') id: string){
+        return  this.moviesService.findOne(id)
     }
     @Post()
     create(@Body() createMovieDto: CreateMovieDto) {
