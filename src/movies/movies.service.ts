@@ -21,4 +21,7 @@ export class MoviesService {
   async findOne(id: String){
     return this.movieModel.findById(id).exec()
   }
+  async edit(id:String, createMovieDto:CreateMovieDto){
+       return this.movieModel.findByIdAndUpdate(id,createMovieDto,{new:true}).exec()
+  }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get,Param, Post ,Body} from '@nestjs/common';
+import { Controller, Get,Param, Post ,Body,Put} from '@nestjs/common';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { MoviesService } from './movies.service';
 
@@ -17,5 +17,9 @@ export class MoviesController {
     @Post()
     create(@Body() createMovieDto: CreateMovieDto) {
        return this.moviesService.create(createMovieDto)
+    }
+    @Put(':id')
+    edit(@Param('id') id: string, @Body() createMovieDto: CreateMovieDto) {
+       return this.moviesService.edit(id,createMovieDto)
     }
 }
