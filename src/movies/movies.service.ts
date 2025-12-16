@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable ,NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Movie, MovieDocument } from './schemas/movie.schema';
@@ -19,7 +19,11 @@ export class MoviesService {
      return this.movieModel.find().exec()
   }
   async findOne(id: String){
-    return this.movieModel.findById(id).exec()
+    let movie = await this.movieModel.findById(id).exec()
+    if(!movie){
+      throw new NotFoundException(`Movie not found ${id}`)
+    }
+    return movie
   }
   async edit(id:String, createMovieDto:CreateMovieDto){
        return this.movieModel.findByIdAndUpdate(id,createMovieDto,{new:true}).exec()
